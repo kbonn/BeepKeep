@@ -3,11 +3,16 @@ package com.example.beepkeep
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -20,7 +25,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,26 +54,43 @@ fun BeepKeepApp(modifier: Modifier = Modifier) {
 
 @Composable
 fun BPEntryCard() {
-    Card(
-        modifier = Modifier
-            .padding(16.dp)
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+    Column {
+        Spacer(modifier = Modifier.weight(1f))
+        Card(
             modifier = Modifier
                 .padding(16.dp)
-                .fillMaxWidth()
+                .weight(2f)
         ) {
-            DataField(label = "Systolic")
-            DataField(label = "Diastolic")
-            DataField(label = "Pulse")
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxSize()
+            ) {
+                DataField(label = "Systolic")
+                DataField(label = "Diastolic")
+                DataField(label = "Pulse")
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .align(Alignment.End)
+                        .padding(16.dp)
+                ) {
+                    Text(text = "Submit")
+                }
+            }
+
         }
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DataField(label: String) {
+fun DataField(
+    label: String,
+    ) {
     var text by remember { mutableStateOf("") }
 
     OutlinedTextField(
