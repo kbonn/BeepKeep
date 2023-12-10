@@ -62,9 +62,6 @@ fun BeepKeepApp(modifier: Modifier = Modifier) {
 
 @Composable
 fun BPEntryCard() {
-    var systolicColor: Color by remember { mutableStateOf(Color.Gray) }
-    var diastolicColor: Color by remember { mutableStateOf(Color.Gray) }
-    var pulseColor: Color by remember { mutableStateOf(Color.Gray) }
 
     Column {
         Spacer(modifier = Modifier.weight(1f))
@@ -80,9 +77,9 @@ fun BPEntryCard() {
                     .padding(16.dp)
                     .fillMaxSize()
             ) {
-                DataField(label = "Systolic", systolicColor)
-                DataField(label = "Diastolic", diastolicColor)
-                DataField(label = "Pulse", pulseColor)
+                SystolicRow()
+                DiastolicRow()
+                PulseRow()
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
@@ -100,25 +97,95 @@ fun BPEntryCard() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DataField(
-    label: String,
-    color: Color
-    ) {
-    var text by remember { mutableStateOf("") }
+fun SystolicRow() {
+    var systolicText by remember { mutableStateOf("") }
+    var systolicColor: Color by remember { mutableStateOf(Color.Gray) }
+
+    if (systolicText.isNotBlank()) {
+        systolicColor = when (systolicText.toInt()){
+            in 20 .. 119 -> Color.Green
+            in 120 .. 139 -> Color.Yellow
+            in 140 .. 180 -> Color.Red
+            else -> Color.Gray
+        }
+    } else {
+        systolicColor = Color.Transparent
+    }
 
     Row {
         Box(
             modifier = Modifier
                 .size(20.dp)
                 .clip(shape)
-                .background(color)
+                .background(systolicColor)
                 .align(Alignment.CenterVertically)
         )
         Spacer(modifier = Modifier.weight(1f))
         OutlinedTextField(
-            value = text,
-            onValueChange = { text = it },
-            label = { Text(label) },
+            value = systolicText,
+            onValueChange = { systolicText = it },
+            label = { Text("Systolic") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DiastolicRow() {
+    var diastolicText by remember { mutableStateOf("") }
+    var diastolicColor: Color by remember { mutableStateOf(Color.Gray) }
+
+    if (diastolicText.isNotBlank()) {
+        diastolicColor = when (diastolicText.toInt()){
+            in 1 .. 79 -> Color.Green
+            in 80 .. 90 -> Color.Yellow
+            in 90 .. 120 -> Color.Red
+            else -> Color.Gray
+        }
+    } else {
+        diastolicColor = Color.Transparent
+    }
+
+    Row {
+        Box(
+            modifier = Modifier
+                .size(20.dp)
+                .clip(shape)
+                .background(diastolicColor)
+                .align(Alignment.CenterVertically)
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        OutlinedTextField(
+            value = diastolicText,
+            onValueChange = { diastolicText = it },
+            label = { Text("Diastolic") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PulseRow() {
+    var pulseText by remember { mutableStateOf("") }
+    var pulseColor: Color by remember { mutableStateOf(Color.Gray) }
+
+    if (pulseText.isNotBlank()) {
+        pulseColor = when (pulseText.toInt()){
+            in 0 .. 79 -> Color.Green
+            in 80 .. 90 -> Color.Yellow
+            in 90 .. 120 -> Color.Red
+            else -> Color.Gray
+        }
+    }
+
+    Row {
+        Spacer(modifier = Modifier.weight(1f))
+        OutlinedTextField(
+            value = pulseText,
+            onValueChange = { pulseText = it },
+            label = { Text("Pulse") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
     }
