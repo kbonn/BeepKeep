@@ -125,7 +125,9 @@ fun SystolicRow() {
             value = systolicText,
             onValueChange = { systolicText = it },
             label = { Text("Systolic") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier
+                .padding(end = 8.dp)
         )
     }
 }
@@ -160,7 +162,9 @@ fun DiastolicRow() {
             value = diastolicText,
             onValueChange = { diastolicText = it },
             label = { Text("Diastolic") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier
+                .padding(end = 8.dp)
         )
     }
 }
@@ -186,7 +190,9 @@ fun PulseRow() {
             value = pulseText,
             onValueChange = { pulseText = it },
             label = { Text("Pulse") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier
+                .padding(end = 8.dp)
         )
     }
 }
