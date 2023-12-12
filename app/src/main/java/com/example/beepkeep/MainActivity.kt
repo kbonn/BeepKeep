@@ -65,7 +65,7 @@ fun BPEntryCard() {
 
     Column {
         Spacer(modifier = Modifier.weight(1f))
-        Card(
+        Box(
             modifier = Modifier
                 .padding(16.dp)
                 .weight(2f)
@@ -201,17 +201,24 @@ fun PulseRow() {
 @Composable
 fun BeepKeepPreview() {
     BeepKeepTheme(useDarkTheme = false) {
-        BeepKeepApp()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            BeepKeepApp()
+        }
     }
 }
 
-/**
- * Composable that displays what the UI of the app looks like in dark theme in the design tab.
- */
 @Preview
 @Composable
 fun BeepKeepDarkThemePreview() {
     BeepKeepTheme(useDarkTheme = true) {
-        BeepKeepApp()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            BeepKeepApp()
+        }
     }
 }
