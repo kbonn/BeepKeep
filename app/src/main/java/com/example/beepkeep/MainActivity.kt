@@ -56,41 +56,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun BeepKeepApp(modifier: Modifier = Modifier) {
-    BPEntryCard()
-}
-
-@Composable
-fun BPEntryCard() {
-
+fun BeepKeepApp() {
     Column {
         Spacer(modifier = Modifier.weight(1f))
-        Box(
-            modifier = Modifier
-                .padding(16.dp)
-                .weight(2f)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxSize()
-            ) {
-                SystolicRow()
-                DiastolicRow()
-                PulseRow()
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .align(Alignment.End)
-                        .padding(16.dp)
-                ) {
-                    Text(text = "Submit")
-                }
-            }
-
-        }
+        BPEntryBox(modifier = Modifier.weight(2f))
         Spacer(modifier = Modifier.weight(1f))
     }
 }
@@ -199,10 +168,9 @@ fun PulseRow() {
 
 @Preview
 @Composable
-fun BeepKeepPreview() {
+fun BeepKeepAppPreview() {
     BeepKeepTheme(useDarkTheme = false) {
         Surface(
-            modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
             BeepKeepApp()
@@ -212,10 +180,9 @@ fun BeepKeepPreview() {
 
 @Preview
 @Composable
-fun BeepKeepDarkThemePreview() {
+fun BeepKeepAppDarkThemePreview() {
     BeepKeepTheme(useDarkTheme = true) {
         Surface(
-            modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
             BeepKeepApp()
