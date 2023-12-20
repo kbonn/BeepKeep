@@ -13,3 +13,7 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 a
 1app/src/main/java/com/example/beepkeep/BPEntry.kt,b/6/b627e6555ca9eab0cc214f9feea496129d8d387f
+b
+2app/src/main/java/com/example/beepkeep/TitleBox.kt,a/6/a6f8f1d30f99b8f278253432397a4e444deacb3a
+a
+1app/src/main/java/com/example/beepkeep/History.kt,f/b/fb7e08756af551abe272ce1a593e7f169276d22d

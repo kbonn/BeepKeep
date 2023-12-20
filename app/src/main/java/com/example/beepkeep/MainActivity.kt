@@ -58,7 +58,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BeepKeepApp() {
     Column {
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .size(64.dp)
+        )
+        TitleBox(modifier = Modifier
+            .align(Alignment.CenterHorizontally)
+        )
         BPEntryBox(modifier = Modifier.weight(2f))
         Spacer(modifier = Modifier.weight(1f))
     }
