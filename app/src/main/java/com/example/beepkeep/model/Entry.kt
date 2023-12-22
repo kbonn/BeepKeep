@@ -1,3 +1,9 @@
 package com.example.beepkeep.model
 
-data class Entry()
+import androidx.annotation.StringRes
+
+data class Entry(
+    val systolic: Int,
+    val diastolic: Int,
+    val pulse: Int
+)
