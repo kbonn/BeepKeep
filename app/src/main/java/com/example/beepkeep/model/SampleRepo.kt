@@ -18,18 +18,18 @@ object SampleRepo {
             pulse = 83
         ),
         Entry(
-            systolic = 120,
+            systolic = 90,
             diastolic = 89,
             pulse = 78
         ),
         Entry(
-            systolic = 120,
-            diastolic = 89,
+            systolic = 127,
+            diastolic = 80,
             pulse = 78
         ),
         Entry(
-            systolic = 120,
-            diastolic = 89,
+            systolic = 111,
+            diastolic = 78,
             pulse = 78
         )
     )

@@ -9,23 +9,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.beepkeep.model.Entry
+import com.example.beepkeep.model.SampleRepo
 import com.example.compose.BeepKeepTheme
 
 @Composable
-fun LargeNumberColumn(data: List<Triple<Int, Int, Int>>) {
+fun LargeNumberColumn() {
     LazyColumn {
-        items(data) { (number1, number2, number3) ->
-            NumberRow(number1, number2, number3)
+        items(SampleRepo.entries) { entry ->
+            NumberRow(entry = entry)
         }
     }
 }
 
 @Composable
-fun NumberRow(number1: Int, number2: Int, number3: Int) {
+fun NumberRow(entry: Entry) {
     Row {
-        Text(text = "$number1", modifier = Modifier.weight(1f))
-        Text(text = "$number2", modifier = Modifier.weight(1f))
-        Text(text = "$number3", modifier = Modifier.weight(1f))
+        Text(text = entry.systolic.toString(), modifier = Modifier.weight(1f))
+        Text(text = entry.diastolic.toString(), modifier = Modifier.weight(1f))
+        Text(text = entry.pulse.toString(), modifier = Modifier.weight(1f))
     }
 }
 
@@ -36,15 +38,7 @@ fun LargeNumberColumnPreview() {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {
-            LargeNumberColumn(
-                data = listOf(
-                    Triple(12, 78, 45),
-                    Triple(34, 90, 11),
-                    Triple(56, 23, 87),
-                    Triple(78, 55, 29),
-                    Triple(90, 12, 63),
-                )
-            )
+            LargeNumberColumn()
         }
     }
 }
@@ -56,15 +50,7 @@ fun LargeNumberColumnPreviewDarkTheme() {
         Surface(
             color = MaterialTheme.colorScheme.background
         ) {
-            LargeNumberColumn(
-                data = listOf(
-                    Triple(12, 78, 45),
-                    Triple(34, 90, 11),
-                    Triple(56, 23, 87),
-                    Triple(78, 55, 29),
-                    Triple(90, 12, 63),
-                )
-            )
+            LargeNumberColumn()
         }
     }
 }
